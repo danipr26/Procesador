@@ -1,5 +1,4 @@
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -17,12 +16,13 @@ begin
 -- process es sensible a estas entradas.
 	process(Registre_PC,Reset,Clk)
 		begin 
+		if(rising_edge(Clk))then
 			if(Reset= '1') then
 				Registreout_PC <=(others=>'0');-- asigna cero a la direccion que tiene 
 					else
 						Registreout_PC <= Registre_PC;	-- le asigna el valor de entrada a la salida				
-			end if;		
+			end if;	
+		end if;
 	end process;		
 
 end ArqPC;
-	
