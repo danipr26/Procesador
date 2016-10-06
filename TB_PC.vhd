@@ -8,10 +8,10 @@ ARCHITECTURE behavior OF PC_Tb IS
  
     COMPONENT PC
     PORT(
-         Registre_npc : IN  std_logic_vector(31 downto 0);
+         Registre_PC : IN  std_logic_vector(31 downto 0);
          Reset : IN  std_logic;
          Clk : IN  std_logic;
-         Registreout : OUT  std_logic_vector(31 downto 0)
+         Registreout_PC : OUT  std_logic_vector(31 downto 0)
         );
     END COMPONENT;
     
@@ -54,14 +54,19 @@ BEGIN
       wait for 100 ns;	
 			Registre_PC <= x"11111111"; 
 		reset <= '0'; 
-			wait for 20 ns;
+			wait for 100 ns;
+			
+			reset <= '1';
+			wait for 100 ns;
 			Registre_PC <= x"01001111";
-			wait for 20 ns;
+			wait for 100 ns;
 			Registre_PC <= x"01111112";
-			wait for 20 ns;
-			Registre_PC <= x"00011003";
+			wait for 100 ns;
+			-- Trabaja en Hexadecimal
+			Registre_PC <= x"F0011003";
       wait;
    end process;
 
 END;
+	
 	
